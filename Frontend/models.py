@@ -24,6 +24,7 @@ class Website(db.Model):
     search_string = db.Column(db.String(500))
 
 
+
 class Data(db.Model):
     data_id = db.Column(db.Integer, primary_key=True)
     website_id = db.Column(db.Integer, db.ForeignKey("website.website_id"), nullable=False)
