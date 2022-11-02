@@ -2,7 +2,7 @@
 
 ## Table of Contents
 1. [Beschreibung des Projekts](#Beschreibung des Projekts)
-2. [Installation] (#Installation)
+2. [Installation](#Installation)
 3. [Libraries und Frameworks](#Libraries und Frameworks)
 4. [Collaboration](#collaboration)
 5. [FAQs](#faqs)
@@ -12,16 +12,20 @@ Mit SimpleScrape ermöglichen wir unseren Usern, Webseiten nach Daten zu scrapen
 
 ## Installation
 Installation von Libraries:
-    **pip install <Library Name>**
+
+**pip install "Library Name"**
+
 Falls pip install nicht funktioniert:
-    **pip3 install <Library Name>**
+
+**pip3 install "Library Name"**
+
 
 Folgende libraries installieren:
-    - Flask
-    - Flask-Login
-    - Flask-SQLAlchemy
-    - SQLAlchemy
-    - Jinja2
+- Flask
+- Flask-Login
+- Flask-SQLAlchemy
+- SQLAlchemy
+- Jinja2
 
 
 ## Libraries und Frameworks
