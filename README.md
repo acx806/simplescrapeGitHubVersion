@@ -1,6 +1,44 @@
 # SimpleScrape
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Table of Contents
+1. [Beschreibung des Projekts](#Beschreibung des Projekts)
+2. [Installation](#Installation)
+3. [Libraries und Frameworks](#Libraries und Frameworks)
+4. [Collaboration](#collaboration)
+5. [FAQs](#faqs)
+
+## Beschreibung des Projekts
+Mit SimpleScrape ermöglichen wir unseren Usern, Webseiten nach Daten zu scrapen. Hierbei können sie über eine URL nach der Verfügbarkeit von Produkten suchen. Jeder User ist in der Lage, ein Benutzerkonto mit seiner E-Mail Adresse zu erstellen. Im Benutzerkonto wird automatisch der Verlauf der Webseiten gespeichert und für erneutes Durchsuchen bereitgestellt. Sollte ein Produkt zunächst nicht verfügbar sein, wird der User benachrichtigt, sobald das gewünschte Produkt wieder verfügbar ist.
+
+## Installation
+Installation von Libraries:
+
+**pip install "Library Name"**
+
+Falls pip install nicht funktioniert:
+
+**pip3 install "Library Name"**
+
+
+Folgende libraries installieren:
+- Flask
+- Flask-Login
+- Flask-SQLAlchemy
+- SQLAlchemy
+- Jinja2
+
+
+## Libraries und Frameworks
+- Flask
+- Jinja2
+- BeautifulSoup4
+
+## Collaboration
+Der main-Branch ist protected. Bei jeder Änderung, die in das Projekt hinzugefügt werden soll, muss der Entwickler zunächst einen Branch erstellen und die Änderung dort pushen. Später wird ein Merge-Request erstellt mit dem erstellten Branch.
+
+## FAQs
+
+
+
 
 

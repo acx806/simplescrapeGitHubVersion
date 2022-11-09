@@ -2,6 +2,24 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
+import cx_Oracle
+
+userpwd = input("Input password ")
+
+host = " ora14.informatik.haw-hamburg.de"
+port = "1521"
+sid = 'inf14'
+user = 'acx810'
+password = userpwd
+sid = cx_Oracle.makedsn(host, port, sid=sid)
+
+cstr = 'oracle://{user}:{password}@{sid}'.format(
+    user=user,
+    password=password,
+    sid=sid
+)
+
+print("Connection to database successfull!")
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -10,7 +28,7 @@ DB_NAME = "database.db"
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'PLEASE CHANGE'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = cstr  # f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
     from .views import views
