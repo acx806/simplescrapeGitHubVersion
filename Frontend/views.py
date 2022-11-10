@@ -9,7 +9,7 @@ views = Blueprint("views", __name__)
 @views.route("/")
 @login_required
 def home():
-    return render_template("home.html", user=current_user)
+    return render_template("Home.html", user=current_user)
 
 
 @views.route("/scrape", methods=['GET', 'POST'])
@@ -23,4 +23,4 @@ def scrape():
         db.session.add(new_scraping_request)
         db.session.commit()
     else:
-        return render_template("scraping.html", user=current_user)
+        return render_template("Scrape.html", user=current_user)
