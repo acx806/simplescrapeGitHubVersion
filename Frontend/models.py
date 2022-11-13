@@ -21,6 +21,7 @@ class Website(db.Model):
     website_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
 
+    productname = db.Column(db.String(100))
     url = db.Column(db.String(1000))
     date_added = db.Column(db.DateTime(timezone=True), default=func.now())
     regex = db.Column(db.String(500))
@@ -35,7 +36,9 @@ class Data(db.Model):
     website_id = db.Column(db.Integer, db.ForeignKey("website.website_id"), nullable=False)
 
     content = db.Column(db.String(2000))
+    availability = db.Column(db.Boolean)
     content_date = db.Column(db.DateTime(timezone=True), default=func.now())
+
 
     def get_id(self):
         return (self.data_id)
