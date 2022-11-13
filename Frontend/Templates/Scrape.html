@@ -27,22 +27,27 @@
             </ul>
         </div>
     </div>
-</nav><img src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" width="510" height="346">
-<form method="POST" style="width: 612.4px;height: 392px;margin: 128px;margin-top: auto; margin-left: auto; margin-right: auto">
-    <div class="form-outline mb-4"><input id="form2Example1" class="form-control form-control form-control" type="url" name="url" /><label class="form-label form-label form-label" for="form2Example1">Web Link</label></div>
-    <div class="form-outline mb-4"><input id="form2Example2" class="form-control form-control form-control" type="text" name="productname"/><label class="form-label form-label form-label" for="form2Example2">Product Name</label></div>
-    <div class="form-outline mb-4"><input id="form2Example3" class="form-control form-control form-control" type="text" name="regex" /><label class="form-label form-label form-label" for="form2Example3">Search Text</label></div>
+</nav><img src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" width="510" height="346"><form method="POST"
+                                                                                                     style="width: 612.4px;height: 392px;margin: 128px;margin-top: auto; margin-left: auto; margin-right: auto">
+    <div class="form-outline mb-4"><input id="form2Example1" class="form-control form-control form-control" type="url" name="product_url"/><label class="form-label form-label form-label" for="form2Example1">Web Link</label></div>
+    <div class="form-outline mb-4"><input id="form2Example2" class="form-control form-control form-control" type="text" name="product_name"/><label class="form-label form-label form-label" for="form2Example2">Product Name</label></div>
+    <div class="form-outline mb-4"><input id="form2Example3" class="form-control form-control form-control" type="text" name="product_suchstring"/><label class="form-label form-label form-label" for="form2Example3">Search Text</label></div>
     <div class="container">
-       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+       <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Scrape
 </button>
     </div>
     <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="exampleModal" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sold out</h5>
+          {% if availability %}
+            <h5 class="modal-title" id="exampleModalLabel">AVAILABLE</h5>
+          {% else %}
+            <h5 class="modal-title" id="exampleModalLabel">SOLD OUT</h5>
+          {% endif %}
+
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
     
