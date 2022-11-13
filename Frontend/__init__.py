@@ -9,7 +9,7 @@ userpwd = input("Input password ")
 host = " ora14.informatik.haw-hamburg.de"
 port = "1521"
 sid = 'inf14'
-user = 'acx810'
+user = 'acz320'
 password = userpwd
 sid = cx_Oracle.makedsn(host, port, sid=sid)
 

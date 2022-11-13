@@ -1,3 +1,5 @@
+import cx_Oracle
+
 from Frontend import create_app
 
 app = create_app()
