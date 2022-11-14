@@ -1,4 +1,4 @@
-import cx_Oracle
+
 
 from Frontend import create_app
 
