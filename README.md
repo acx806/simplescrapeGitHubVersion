@@ -13,11 +13,9 @@ Mit SimpleScrape ermöglichen wir unseren Usern, Webseiten nach Daten zu scrapen
 ## Installation
 Installation von Libraries:
 
-**pip install "Library Name"**
-
-Falls pip install nicht funktioniert:
-
-**pip3 install "Library Name"**
+```bash
+pip install -r requirements.txt
+```
 
 
 Folgende libraries installieren:
@@ -32,6 +30,8 @@ Folgende libraries installieren:
 - Flask
 - Jinja2
 - BeautifulSoup4
+- Requests
+- SQLAlchemy
 
 ## Collaboration
 Der main-Branch ist protected. Bei jeder Änderung, die in das Projekt hinzugefügt werden soll, muss der Entwickler zunächst einen Branch erstellen und die Änderung dort pushen. Später wird ein Merge-Request erstellt mit dem erstellten Branch.

@@ -1,0 +1,6 @@
+Flask
+flask_sqlalchemy
+flask_login
+bs4
+requests
+cx_Oracle
