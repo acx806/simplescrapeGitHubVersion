@@ -12,6 +12,9 @@ views = Blueprint("views", __name__)
 def home():
     return render_template("Home.html", user=current_user)
 
+@views.route("/ForgotPassword")
+def forgotPassword():
+    return render_template("/ForgotPassword.html", user = current_user)
 
 @views.route("/scrape", methods=['GET', 'POST'])
 @login_required
