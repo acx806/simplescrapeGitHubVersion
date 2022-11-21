@@ -1,5 +1,8 @@
 # SimpleScrape
 
+ssh acx810@ssh.informatik.haw-hamburg.de
+ssh simplescrape.ful.informatik.haw-hamburg.de@141.22.10.182
+
 ## Table of Contents
 1. [Beschreibung des Projekts](#Beschreibung des Projekts)
 2. [Installation](#Installation)
