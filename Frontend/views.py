@@ -1,8 +1,8 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request
 from .models import Website, Data
 from flask_login import login_required, current_user
 from . import db
-import Logic.Scrape as Scrape
+import Frontend.Scrape as Scrape
 
 views = Blueprint("views", __name__)
 
