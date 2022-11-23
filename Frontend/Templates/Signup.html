@@ -24,8 +24,30 @@
         <div class="right-block"><a href="login">Already got an Account?</a></div>
     </div>
     <div class="container">
-        <button type= "submit"  class="btn btn-primary ms-auto" role="button" href="scrape" style="--bs-primary: #9900ff;--bs-primary-rgb: 153,0,255;background: rgb(0,123,255);font-weight: bold;font-size: 17px;">Create Account</button>
+        <button type= "submit"  class="btn btn-primary ms-auto" role="button" href="scrape" style="--bs-primary: #9900ff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px;">Create Account</button>
     </div>
+
+     {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+
+        <div class="alert  alert-danger alter-dismissable fade show" class="close" role="alert">
+
+            <p></p>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';" aria-hidden="true">&times;</span>
+            {{ message }}
+
+        </div>
+
+    {% else %}
+
+        <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{ message }}
+
+            <span class="closebtn" onclick="this.parentElement.style.display='none';" aria-hidden="true">&times;</span>
+
+        </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
 </form>
 
     <script src="../static/bootstrap/js/bootstrap.min.js"></script>
