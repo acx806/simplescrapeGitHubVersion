@@ -51,6 +51,7 @@ def sign_up():
         elif len(email) < 4:
             flash('Email must be greater than 3 characters.', category='error')
 
+
         elif password1 != password2:
             flash('Passwords don\'t match.', category='error')
             print("pw dont match")
