@@ -43,7 +43,7 @@ ssh scraper@141.22.10.182
 
 <VM password>
 
-git clone https://git.haw-hamburg.de/acx810/simplescrape.git
+git update https://git.haw-hamburg.de/acx810/simplescrape.git
 
 sudo service nginx restart
 
