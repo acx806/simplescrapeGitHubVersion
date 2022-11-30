@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, flash
 from .models import Website, Data
 from flask_login import login_required, current_user
 from . import db
@@ -33,6 +33,13 @@ def scrape():
 
         db.session.add(website)
         db.session.commit()
+
+        if scrape.is_available():
+            flash('Verfügbar', category="success")
+            print("Verfügbar")
+        else:
+            flash('Ausverkauft', category='error')
+            print("Ausverkauft")
 
         data = Data(website_id=website.website_id, availability=availability)
 
