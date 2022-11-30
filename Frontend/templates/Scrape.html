@@ -87,22 +87,26 @@
             </div>
             <div class="col align-self-center">
                 <div class="col-lg-20 align-self-start">
+                    {% block content %}
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col" name="url_colum">Web-Link</th>
-                            <th scope="col" name="prodName_colum">Product Name</th>
-                            <th scope="col" name="quantity_colum">Quantity</th>
+                            <th scope="col">Web-Link</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Quantity</th>
                         </tr>
                         </thead>
                         {% for website in websites %}
                         <tbody>
                         <tr>
-                            <td rowspan="{{website}}">{{}}</td>
+                          <td>{{ website.url }}</td>
+                         <td>{{ website.productname }}</td>
+                         <td>{{ website.search_string }}</td>
                         </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
+                    {% endblock %}
                 </div>
             </div>
 
