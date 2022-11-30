@@ -44,7 +44,9 @@ def scrape():
             flash('Incorrect URL')
             print("Averted value error for url")
 
+        websites = Website.query
 
-        return render_template("Scrape.html", user=current_user, availability=availability)
+        return render_template("Scrape.html", user=current_user, availability=availability, websites=websites)
     else:
-        return render_template("Scrape.html", user=current_user)
+        websites = Website.query
+        return render_template("Scrape.html", user=current_user, websites=websites)
