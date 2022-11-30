@@ -20,7 +20,6 @@
         <div id="navcol-2" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Personal Data</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Search History</a></li>
                 <li class="nav-item"><a class="nav-link active" href="#">Scrape</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Manage Account</a></li>
                 <li class="nav-item"><a class="nav-link" href="/">Log-out</a></li>
@@ -29,34 +28,26 @@
     </div>
 </nav><img src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" width="510" height="346"><form method="POST"
                                                                                                      style="width: 612.4px;height: 392px;margin: 128px;margin-top: auto; margin-left: auto; margin-right: auto">
-    <div class="form-outline mb-4"><input id="form2Example1" class="form-control form-control form-control" type="url" name="product_url"/><label class="form-label form-label form-label" for="form2Example1">Web Link</label></div>
-    <div class="form-outline mb-4"><input id="form2Example2" class="form-control form-control form-control" type="text" name="product_name"/><label class="form-label form-label form-label" for="form2Example2">Product Name</label></div>
-    <div class="form-outline mb-4"><input id="form2Example3" class="form-control form-control form-control" type="text" name="product_suchstring"/><label class="form-label form-label form-label" for="form2Example3">Search Text</label></div>
-    <div class="container">
-    </div>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
-   style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
-    Scrape Interval
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">One Time Only</a></li>
-    <li><a class="dropdown-item" href="#">Once a Day</a></li>
-    <li><a class="dropdown-item" href="#">Once a Week</a></li>
-  </ul>
-</div>
 
-      <p></p>
-      <p></p>
-      <p></p>
-
-
-
-
-    <button type="submit" class="btn btn-primary ms-auto" data-dismiss="alert" role="button"
+<div class="container">
+    <div class="row-cols-xxl-auto justify-content-start">
+        <div class="col-xxl-auto align-self-center">
+        <div class="form-outline mb-4"><input id="form2Example1" class="form-control form-control form-control" type="url" name="product_url"/><label class="form-label form-label form-label" for="form2Example1">Web Link</label></div>
+        <div class="form-outline mb-4"><input id="form2Example2" class="form-control form-control form-control" type="text" name="product_name"/><label class="form-label form-label form-label" for="form2Example2">Product Name</label></div><div class="form-outline mb-4"><input id="form2Example3" class="form-control form-control form-control" type="text" name="product_suchstring"/><label class="form-label form-label form-label" for="form2Example3">Search Text</label></div>
+ <div class="center-block">
+            <div class="form-check"><input id="form2Example31" class="form-check-input" type="checkbox" value
+                                           checked/><label class="form-label form-label form-check-label"
+                                                           for="form2Example31"> Save to List? </label></div>
+        </div>
+            <button type="submit" class="btn btn-primary ms-auto" data-dismiss="alert" role="button"
     style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
   Scrape
 </button>
+
+      <p></p>
+      <p></p>
+      <p></p>
+
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
     'error' %}
@@ -78,27 +69,62 @@
 
         </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
+        </div>
+        <div class="col align-self-center">
+            <div class="col-lg-20 align-self-start">
+       <table class="table">
+  <thead>
+    <tr>
+        <th scope="col">#</th>
+      <th scope="col"  name="url_colum">Web-Link</th>
+      <th scope="col" name="prodName_colum">Product Name</th>
+      <th scope="col" name="quantity_colum">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+        <td>https://beispielLink.de/bsp</td>
+        <td>beispiel</td>
+        <td>Sold out</td>
+    </tr>
+    <tr>
 
+    </tr>
+    <tr>
 
-    <!-- Modal -->
-{#<div class="modal" id="exampleModal" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-          {% if availability %}
-            <h5 class="modal-title" id="exampleModalLabel">AVAILABLE</h5>
-          {% else %}
-            <h5 class="modal-title" id="exampleModalLabel">SOLD OUT</h5>
-          {% endif %}
+    </tr>
+  </tbody>
+</table>
+        </div>
+        </div>
 
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <div class="modal-footer">
-      </div>
     </div>
-  </div>
-</div>#}
+</div>
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+   style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
+    Scrape Interval
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">One Time Only</a></li>
+    <li><a class="dropdown-item" href="#">Once a Day</a></li>
+    <li><a class="dropdown-item" href="#">Once a Week</a></li>
+  </ul>
+</div>
+
+      <p></p>
+      <p></p>
+      <p></p>
+
+    <button type="submit" class="btn btn-primary ms-auto" data-dismiss="alert" role="button"
+    style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
+  Scrape All
+</button>
+
+
 </form>
     <script src="../static/bootstrap/js/bootstrap.min.js"></script>
     <script src="../static/js/bs-init.js"></script>
