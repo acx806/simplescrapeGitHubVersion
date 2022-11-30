@@ -4,8 +4,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 
-
-
 auth = Blueprint('auth', __name__)
 
 
@@ -69,3 +67,9 @@ def sign_up():
             return redirect(url_for('views.scrape'))
 
     return render_template("Signup.html", user=current_user)
+
+
+@auth.route('/delete-account', methods=['GET'])
+def delete_account():
+    db.session.delete(current_user)
+    db.session.commit()

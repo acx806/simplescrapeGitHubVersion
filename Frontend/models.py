@@ -26,6 +26,7 @@ class Website(db.Model):
     date_added = db.Column(db.DateTime(timezone=True), default=func.now())
     regex = db.Column(db.String(500))
     search_string = db.Column(db.String(500))
+    regularly = db.Column(db.String(10))
 
     def get_id(self):
         return (self.website_id)
