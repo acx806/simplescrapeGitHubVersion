@@ -23,16 +23,17 @@ def scrape():
         scraping_suchstring = request.form.get("product_suchstring")
         scraping_url = request.form.get("product_url")
 
-        scrape = Scrape.Scrape(scraping_url, scraping_suchstring)
-        scrape.get_html()
-        availability = scrape.is_available()
+        try:
+            scrape = Scrape.Scrape(scraping_url, scraping_suchstring)
+            scrape.get_html()
+            availability = scrape.is_available()
 
-        website = Website(productname=scraping_productname,
-                          url=scraping_url, search_string=scraping_suchstring,
-                          user_id=current_user.user_id)
+            website = Website(productname=scraping_productname,
+                              url=scraping_url, search_string=scraping_suchstring,
+                              user_id=current_user.user_id)
 
-        db.session.add(website)
-        db.session.commit()
+            db.session.add(website)
+            db.session.commit()
 
         if scrape.is_available():
             flash('Verfügbar', category="success")
@@ -44,8 +45,12 @@ def scrape():
         data = Data(website_id=website.website_id, availability=availability)
 
 
-        db.session.add(data)
-        db.session.commit()
+            db.session.add(data)
+            db.session.commit()
+        except ValueError as e:
+            flash('Incorrect URL')
+            print("Averted value error for url")
+
 
         return render_template("Scrape.html", user=current_user, availability=availability)
     else:
