@@ -35,7 +35,14 @@ def scrape():
             db.session.add(website)
             db.session.commit()
 
-            data = Data(website_id=website.website_id, availability=availability)
+        if scrape.is_available():
+            flash('Verfügbar', category="success")
+            print("Verfügbar")
+        else:
+            flash('Ausverkauft', category='error')
+            print("Ausverkauft")
+
+        data = Data(website_id=website.website_id, availability=availability)
 
 
             db.session.add(data)
@@ -47,4 +54,6 @@ def scrape():
 
         return render_template("Scrape.html", user=current_user, availability=availability)
     else:
-        return render_template("Scrape.html", user=current_user)
+
+        websites = [["https://beemybox.de/", "beispielname", "ausverkauft"]]
+        return render_template("Scrape.html", user=current_user, websites=websites)
