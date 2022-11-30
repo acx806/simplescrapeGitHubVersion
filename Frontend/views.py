@@ -49,4 +49,6 @@ def scrape():
 
         return render_template("Scrape.html", user=current_user, availability=availability)
     else:
-        return render_template("Scrape.html", user=current_user)
+
+        websites = [["https://beemybox.de/", "beispielname", "ausverkauft"]]
+        return render_template("Scrape.html", user=current_user, websites=websites)

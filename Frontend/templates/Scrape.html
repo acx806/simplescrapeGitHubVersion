@@ -6,17 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>SE2 (1)</title>
     <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&amp;display=swap">
     <link rel="stylesheet" href="../static/css/Navbar-Right-Links-icons.css">
     <link rel="stylesheet" href="../static/css/untitled.css">
 </head>
 
-<body><nav class="navbar navbar-light navbar-expand-md py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class=""><svg class="bi bi-bezier" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+<body>
+<nav class="navbar navbar-light navbar-expand-md py-3">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class=""><svg
+            class="bi bi-bezier" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+            viewBox="0 0 16 16">
         <img src="">
                     
                     
-                </svg></span><span>Simple Scrape</span></a><button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                </svg></span><span>Simple Scrape</span></a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
+                class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div id="navcol-2" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Personal Data</a></li>
@@ -26,108 +32,110 @@
             </ul>
         </div>
     </div>
-</nav><img src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" width="510" height="346"><form method="POST"
-                                                                                                     style="width: 612.4px;height: 392px;margin: 128px;margin-top: auto; margin-left: auto; margin-right: auto">
+</nav>
+<img src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" width="510" height="346">
+<form method="POST"
+      style="width: 612.4px;height: 392px;margin: 128px;margin-top: auto; margin-left: auto; margin-right: auto">
 
-<div class="container">
-    <div class="row-cols-xxl-auto justify-content-start">
-        <div class="col-xxl-auto align-self-center">
-        <div class="form-outline mb-4"><input id="form2Example1" class="form-control form-control form-control" type="url" name="product_url"/><label class="form-label form-label form-label" for="form2Example1">Web Link</label></div>
-        <div class="form-outline mb-4"><input id="form2Example2" class="form-control form-control form-control" type="text" name="product_name"/><label class="form-label form-label form-label" for="form2Example2">Product Name</label></div><div class="form-outline mb-4"><input id="form2Example3" class="form-control form-control form-control" type="text" name="product_suchstring"/><label class="form-label form-label form-label" for="form2Example3">Search Text</label></div>
- <div class="center-block">
-            <div class="form-check"><input id="form2Example31" class="form-check-input" type="checkbox" value
-                                           checked/><label class="form-label form-label form-check-label"
-                                                           for="form2Example31"> Save to List? </label></div>
-        </div>
-            <button type="submit" class="btn btn-primary ms-auto" data-dismiss="alert" role="button"
-    style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
-  Scrape
-</button>
+    <div class="container">
+        <div class="row-cols-xxl-auto justify-content-start">
+            <div class="col-xxl-auto align-self-center">
+                <div class="form-outline mb-4"><input id="form2Example1" class="form-control form-control form-control"
+                                                      type="url" name="product_url"/><label
+                        class="form-label form-label form-label" for="form2Example1">Web Link</label></div>
+                <div class="form-outline mb-4"><input id="form2Example2" class="form-control form-control form-control"
+                                                      type="text" name="product_name"/><label
+                        class="form-label form-label form-label" for="form2Example2">Product Name</label></div>
+                <div class="form-outline mb-4"><input id="form2Example3" class="form-control form-control form-control"
+                                                      type="text" name="product_suchstring"/><label
+                        class="form-label form-label form-label" for="form2Example3">Search Text</label></div>
+                <div class="center-block">
+                    <div class="form-check"><input id="form2Example31" class="form-check-input" type="checkbox" value
+                                                   checked/><label class="form-label form-label form-check-label"
+                                                                   for="form2Example31"> Save to List? </label></div>
+                </div>
+                <button type="submit" class="btn btn-primary ms-auto" data-dismiss="alert" role="button"
+                        style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
+                    Scrape
+                </button>
 
-      <p></p>
-      <p></p>
-      <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
 
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+                {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
     'error' %}
 
-        <div class="alert  alert-danger alter-dismissable fade show" class="close" role="alert">
+                    <div class="alert  alert-danger alter-dismissable fade show" class="close" role="alert">
 
-            <p></p>
-            <span class="closebtn" onclick="this.parentElement.style.display='none';" aria-hidden="true">&times;</span>
-            {{ message }}
+                        <p></p>
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';" aria-hidden="true">&times;</span>
+                        {{ message }}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="alert alert-success alter-dismissable fade show" role="alert">
+                        {{ message }}
+
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';" aria-hidden="true">&times;</span>
+
+                    </div>
+                {% endif %} {% endfor %} {% endif %} {% endwith %}
+            </div>
+            <div class="col align-self-center">
+                <div class="col-lg-20 align-self-start">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" name="url_colum">Web-Link</th>
+                            <th scope="col" name="prodName_colum">Product Name</th>
+                            <th scope="col" name="quantity_colum">Quantity</th>
+                        </tr>
+                        </thead>
+                        {% for website in websites %}
+                        <tbody>
+                        <tr>
+                            <td rowspan="{{website}}">{{}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
         </div>
-
-    {% else %}
-
-        <div class="alert alert-success alter-dismissable fade show" role="alert">
-            {{ message }}
-
-            <span class="closebtn" onclick="this.parentElement.style.display='none';" aria-hidden="true">&times;</span>
-
-        </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
-        </div>
-        <div class="col align-self-center">
-            <div class="col-lg-20 align-self-start">
-       <table class="table">
-  <thead>
-    <tr>
-        <th scope="col">#</th>
-      <th scope="col"  name="url_colum">Web-Link</th>
-      <th scope="col" name="prodName_colum">Product Name</th>
-      <th scope="col" name="quantity_colum">Quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-        <td>https://beispielLink.de/bsp</td>
-        <td>beispiel</td>
-        <td>Sold out</td>
-    </tr>
-    <tr>
-
-    </tr>
-    <tr>
-
-    </tr>
-  </tbody>
-</table>
-        </div>
-        </div>
-
     </div>
-</div>
 
 
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
-   style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
-    Scrape Interval
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">One Time Only</a></li>
-    <li><a class="dropdown-item" href="#">Once a Day</a></li>
-    <li><a class="dropdown-item" href="#">Once a Week</a></li>
-  </ul>
-</div>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
+            Scrape Interval
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">One Time Only</a></li>
+            <li><a class="dropdown-item" href="#">Once a Day</a></li>
+            <li><a class="dropdown-item" href="#">Once a Week</a></li>
+        </ul>
+    </div>
 
-      <p></p>
-      <p></p>
-      <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
 
     <button type="submit" class="btn btn-primary ms-auto" data-dismiss="alert" role="button"
-    style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
-  Scrape All
-</button>
+            style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
+        Scrape All
+    </button>
 
 
 </form>
-    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../static/js/bs-init.js"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/js/bs-init.js"></script>
 </body>
 
 </html>
