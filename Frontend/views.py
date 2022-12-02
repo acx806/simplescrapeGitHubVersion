@@ -11,9 +11,11 @@ views = Blueprint("views", __name__)
 def home():
     return render_template("Home.html", user=current_user)
 
+
 @views.route("/ForgotPassword")
 def forgotPassword():
-    return render_template("/ForgotPassword.html", user = current_user)
+    return render_template("/ForgotPassword.html", user=current_user)
+
 
 @views.route("/scrape", methods=['GET', 'POST'])
 @login_required
@@ -30,13 +32,19 @@ def scrape():
 
             website = Website(productname=scraping_productname,
                               url=scraping_url, search_string=scraping_suchstring,
-                              user_id=current_user.user_id)
+                              user_id=current_user.user_id, available=availability)
+
+            if scrape.is_available():
+                website.available = "Yes"
+                flash("In Stock", category="success")
+            else:
+                website.available = "No"
+                flash("Sold Out", category="error")
 
             db.session.add(website)
             db.session.commit()
 
             data = Data(website_id=website.website_id, availability=availability)
-
 
             db.session.add(data)
             db.session.commit()

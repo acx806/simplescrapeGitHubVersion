@@ -64,7 +64,7 @@
                 <p></p>
 
                 {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %} {% if category ==
+              messages %} {% for category, message in messages %} {% if category ==
     'error' %}
 
                     <div class="alert  alert-danger alter-dismissable fade show" class="close" role="alert">
@@ -85,27 +85,29 @@
                     </div>
                 {% endif %} {% endfor %} {% endif %} {% endwith %}
             </div>
-            <div class="col align-self-center">
+            <div class="col align-self-center" style=" width:600px; height:280px; overflow: auto">
                 <div class="col-lg-20 align-self-start">
                     {% block content %}
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Web-Link</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Quantity</th>
-                        </tr>
-                        </thead>
-                        {% for website in websites %}
-                        <tbody>
-                        <tr>
-                          <td>{{ website.url }}</td>
-                         <td>{{ website.productname }}</td>
-                         <td>{{ website.search_string }}</td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Web-Link</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">SearchString</th>
+                                <th scope="col">Available</th>
+                            </tr>
+                            </thead>
+                            {% for website in websites %}
+                                <tbody>
+                                <tr>
+                                    <td>{{ website.url }}</td>
+                                    <td>{{ website.productname }}</td>
+                                    <td>{{ website.search_string }}</td>
+                                    <td>{{ website.available }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     {% endblock %}
                 </div>
             </div>
