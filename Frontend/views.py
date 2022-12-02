@@ -12,6 +12,11 @@ def home():
     return render_template("Home.html", user=current_user)
 
 
+@views.route("/personalData")
+def personalData():
+    return render_template("/PersonalData.html", user=current_user)
+
+
 @views.route("/ForgotPassword")
 def forgotPassword():
     return render_template("/ForgotPassword.html", user=current_user)
