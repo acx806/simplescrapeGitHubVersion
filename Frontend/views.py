@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash
-from .models import Website, Data
+from .models import Website, Data, User
 from flask_login import login_required, current_user
 from . import db
 import Frontend.Scrape as Scrape
@@ -14,7 +14,10 @@ def home():
 
 @views.route("/personalData")
 def personalData():
-    return render_template("/PersonalData.html", user=current_user)
+    email = current_user.email
+    userId = current_user.user_id
+    userWebsite = current_user.website
+    return render_template("/PersonalData.html", user=current_user, email=email, userId=userId, userWebsite=userWebsite)
 
 
 @views.route("/ForgotPassword")

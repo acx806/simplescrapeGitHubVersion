@@ -29,45 +29,51 @@
                 <li class="nav-item"><a class="nav-link active" href="#">Personal Data</a></li>
                 <li class="nav-item"><a class="nav-link" href="scrape">Scrape</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Manage Account</a></li>
-                <li class="nav-item"><a class="nav-link" href="home">Log-out</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Log-out</a></li>
             </ul>
         </div>
     </div>
 </nav></div>
-    <div class="container"><img src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" class ="deer"/>
+    <form method="POST"
+          style="width: 612.4px;height: 392px;margin: 128px;margin-top: auto; margin-left: auto; margin-right: auto">   <div class="container"><img src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" class ="deer"/>
         <div class="table-responsive">
+            {% block content %}
             <table class="table">
                 <thead>
                     <tr>
-                        <th>E-mail</th>
-                        <th>User-Id</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">User-Id</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 2</td>
+                        <td>{{ current_user.email }}</td>
+                        <td>{{ current_user.user_id }}</td>
                     </tr>
                     <tr></tr>
                 </tbody>
             </table>
         </div>
-        <div class="table-responsive">
+         <div class="col align-self-center" style=" width:600px; height:280px; overflow: auto">
             <table class="table">
                 <thead>
                     <tr>
                         <th>Scrape History</th>
                     </tr>
                 </thead>
+                {% for website in userWebsite %}
                 <tbody>
                     <tr>
-                        <td>Cell 1</td>
+                        <td>{{ website.url}}</td>
                     </tr>
                     <tr></tr>
                 </tbody>
+                {% endfor %}
+            {% endblock %}
             </table>
         </div>
     </div>
+    </form>
 <script src="../static/bootstrap/js/bootstrap.min.js"></script>
     <script src="../static/js/bs-init.js"></script>
 </body>

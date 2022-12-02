@@ -1,6 +1,9 @@
-Flask
+Flask~=2.2.2
 flask_sqlalchemy
 flask_login
-bs4
-requests
+bs4~=0.0.1
+requests~=2.28.1
 cx_Oracle
+Werkzeug~=2.2.2
+SQLAlchemy~=1.4.44
+beautifulsoup4~=4.11.1
