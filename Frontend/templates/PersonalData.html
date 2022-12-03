@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PersonalData</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet" href="../static/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="../static/css/untitled.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-light navbar-expand-md py-3">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class=""><svg
+            class="bi bi-bezier" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+            viewBox="0 0 16 16">
+        <img src="">
+
+
+                </svg></span><span>Simple Scrape</span></a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
+                class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div id="navcol-2" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Personal Data</a></li>
+                <li class="nav-item"><a class="nav-link" href="scrape">Scrape</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Manage Account</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Log-out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav></div>
+    <form method="POST"
+          style="width: 612.4px;height: 392px;margin: 128px;margin-top: auto; margin-left: auto; margin-right: auto">   <div class="container"><img src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" class ="deer"/>
+        <div class="table-responsive">
+            {% block content %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">User-Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ current_user.email }}</td>
+                        <td>{{ current_user.user_id }}</td>
+                    </tr>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+         <div class="col align-self-center" style=" width:600px; height:280px; overflow: auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Scrape History</th>
+                    </tr>
+                </thead>
+                {% for website in userWebsite %}
+                <tbody>
+                    <tr>
+                        <td>{{ website.url}}</td>
+                    </tr>
+                    <tr></tr>
+                </tbody>
+                {% endfor %}
+            {% endblock %}
+            </table>
+        </div>
+    </div>
+    </form>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/js/bs-init.js"></script>
+</body>
+</html>

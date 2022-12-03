@@ -7,8 +7,6 @@ class User(db.Model, UserMixin):
     user_id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
-    # first_name = db.Column(db.String(150))
-    # last_name = db.Column(db.String(150))
     account_creation_date = db.Column(db.DateTime(timezone=True), default=func.now())
 
     website = db.relationship("Website", backref="user", lazy=True)
@@ -27,6 +25,9 @@ class Website(db.Model):
     regex = db.Column(db.String(500))
     search_string = db.Column(db.String(500))
     regularly = db.Column(db.String(10))
+    available = db.Column(db.String(10))
+
+
 
     def get_id(self):
         return (self.website_id)
