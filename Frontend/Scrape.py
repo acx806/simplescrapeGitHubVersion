@@ -28,8 +28,6 @@ class Scrape:
             '''TODO: Flash incorrect URL'''
             print("URL is not available")
 
-
-
     def is_available(self):
         if self.html is not None:
             regex = r"<(\S*?)[ >]"
@@ -42,9 +40,10 @@ class Scrape:
                 regex_matches = re.match(regex, str(tag))
 
                 if regex_matches.group(1) in accepted_tags:
-                    print(self.search_string + " found in \"" + regex_matches.group(1) + "\" tag")
+                    #print(self.search_string + " found in \"" + regex_matches.group(1) + "\" tag")
                     return False
 
             return True
         else:
             raise ValueError("Incorrect URL")
+

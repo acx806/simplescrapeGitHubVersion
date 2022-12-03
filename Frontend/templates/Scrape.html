@@ -50,11 +50,12 @@
                                                       type="text" name="product_suchstring"/><label
                         class="form-label form-label form-label" for="form2Example3">Search Text</label></div>
                 <div class="center-block">
-                    <div class="form-check"><input id="form2Example31" class="form-check-input" type="checkbox" value
+                    <div class="form-check"><input id="form2Example31" name="save" class="form-check-input" type="checkbox" value
                                                    checked/><label class="form-label form-label form-check-label"
                                                                    for="form2Example31"> Save to List? </label></div>
                 </div>
-                <button type="submit" class="btn btn-primary ms-auto" data-dismiss="alert" role="button"
+                <button type="submit" class="btn btn-primary ms-auto" name='btn' value="scrape" data-dismiss="alert"
+                        role="button"
                         style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
                     Scrape
                 </button>
@@ -115,28 +116,31 @@
         </div>
     </div>
 
-
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                data-bs-toggle="dropdown" aria-expanded="false"
-                style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
-            Scrape Interval
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">One Time Only</a></li>
-            <li><a class="dropdown-item" href="#">Once a Day</a></li>
-            <li><a class="dropdown-item" href="#">Once a Week</a></li>
-        </ul>
-    </div>
-
     <p></p>
     <p></p>
     <p></p>
 
-    <button type="submit" class="btn btn-primary ms-auto" data-dismiss="alert" role="button"
-            style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
-        Scrape All
-    </button>
+    <form class="form-inline" method="POST" action="{{ url_for('views.scrape') }}">
+        <div class="form-group">
+            <div class="input-group">
+                <select name="time_interval" class="select">
+                    <option value="once">Scrape Now</option>
+                    <option value="10m">10m</option>
+                    <option value="1h">1h</option>
+                    <option value="1d">1d</option>
+                </select>
+            </div>
+
+            <p></p>
+            <p></p>
+            <p></p>
+            <button type="submit" name='btn' value="scrapeAll" class="btn btn-primary ms-auto" data-dismiss="alert"
+                    role="button"
+                    style="--bs-primary: #ffffff;--bs-primary-rgb: 153,0,255;background: rgb(76,15,109);font-weight: bold;font-size: 17px; color:white ">
+                > Go
+            </button>
+        </div>
+    </form>
 
 
 </form>
