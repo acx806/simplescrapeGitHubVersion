@@ -34,16 +34,14 @@ class Scrape:
             matched_tags = self.soup.find_all(
                 lambda tag: len(tag.find_all()) == 0 and self.search_string in tag.text.lower())
 
-            accepted_tags = ["button", "p", "h1", "h2"]
+            accepted_tags = ["button", "p", "h1", "h2", "div"]
 
             for tag in matched_tags:
                 regex_matches = re.match(regex, str(tag))
-
-                if regex_matches.group(1) in accepted_tags:
-                    #print(self.search_string + " found in \"" + regex_matches.group(1) + "\" tag")
+                regex_matches_parent = re.match(regex, str(tag.parent))
+                if regex_matches.group(1) in accepted_tags or regex_matches_parent.group(1) in accepted_tags:
                     return False
 
             return True
         else:
             raise ValueError("Incorrect URL")
-
