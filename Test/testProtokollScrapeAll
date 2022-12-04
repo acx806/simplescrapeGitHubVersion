@@ -1,0 +1,35 @@
+Testprotokoll zur Funktion "scrape_all"
+
+Version 1.0
+--------------------------------------------------------------
+Hinweis:
+    Die Tests erfolgen mithilfe der Domain "simplescrape.net".
+    Die Tests decken ausschließlich die Kernfunktionalität ab.
+--------------------------------------------------------------
+1. Testbeschreibung
+In diesem Testprotokoll testen wir die Funktion scrape_all, welche eine Liste von Webseiten durchgeht und dort jedes Produkt erneut auf Verfügbarkeit überprüft. Diese Funktion kann vom User jederzeit benutzt werden. Sollte ein Produkt, welches zuvor nicht verfügbar war, wieder verfügbar sein, wird die Liste aktualisiert (und andersherum).
+
+2. Annahmen und Voraussetzungen
+Vor Ausführung des Tests wird eine Produkt ausgewählt, welches derzeit ausverkauft ist auf der entsprechenden Webseite sowie ein Produkt, welches definitiv verfügbar ist (hierbei handelt es sich um zwei verschiedene Produkte, da es egal ist, um welches spezifische Produkt es sich handelt)
+
+3. Testdaten
+Domain: simplescrape.net
+Produkt (ausverkauft): https://shop.keto-up.de/products/ketoup-lower-carb-nudeln-fusilli-soja-190-g?variant=43629537132812, Keto-Nudeln
+Produkt (verfügbar): https://shop.keto-up.de/products/ketoup-flohsamenschalen-mehl-300g?variant=31335452737647, Keto-Mehl
+
+4. Auszuführende Schritte
+- Wir leiten die Domain simplescrape.net auf eine URL um, welches ein ausverkauftes Produkt aufzeigt
+- WIr loggen uns auf unserer Webseite ein und fügen simplescrape.net in unsere Liste hinzu, welche gescraped werden soll 
+- nun leiten wir die Domain simplescrape.net auf eine URl um, welches ein noch verfügbares Produkt hat 
+- erneut rufen wir unsere eigene Webseite auf, wählen die Option "once" und drücken auf Go
+
+5. Erwartetes Ergebnis
+Das zu erwartende Ergebnis wäre, dass dem Nutzer angezeigt wird, dass das Produkt von simplescrape.net nun wieder verfügbar ist.
+
+6. Tatsächliches Ergebnis und Nachbedingungen
+Nach Ausführung der Schritte ist zu sehen, dass sich der Status von "ausverkauft" zu "verfügbar" in der Liste geändert hat und die Funktion korrekt arbeitet. Sollte nun der User auf die entsprechende Seite gehen, wird er sehen, dass sein gewünschtes Produkt wieder verfügbar ist.
+
+
+
+
+
