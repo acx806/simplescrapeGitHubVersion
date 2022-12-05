@@ -26,6 +26,12 @@ def forgotPassword():
     return render_template("/ForgotPassword.html", user=current_user)
 
 
+@views.route("/ManageAccount")
+def manageAccount():
+    # Funktionalität fehlt noch
+    return render_template("/ManageAccount.html")
+
+
 @views.route("/scrape", methods=['GET', 'POST'])
 @login_required
 def scrape():
