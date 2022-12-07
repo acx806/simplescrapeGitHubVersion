@@ -26,10 +26,13 @@ def forgotPassword():
     return render_template("/ForgotPassword.html", user=current_user)
 
 
-@views.route("/ManageAccount")
-def manageAccount():
-    # Funktionalität fehlt noch
-    return render_template("/ManageAccount.html")
+
+
+@views.route("/deleteHistory")
+def delete_history():
+
+    query = website_table.delete().where(website_table.columns.user_id == user_table.columns.user_id)
+
 
 
 @views.route("/scrape", methods=['GET', 'POST'])
@@ -95,6 +98,10 @@ def scrape():
     else:
         websites = get_regular_websites()
         return render_template("Scrape.html", user=current_user, websites=websites)
+
+
+
+
 
 
 def get_regular_websites():

@@ -27,6 +27,39 @@ def login():
     return render_template("Login.html", user=current_user)
 
 
+@auth.route("/ManageAccount", methods=['GET', 'POST'])
+@login_required
+def manageAccount():
+    # Funktionalität fehlt noch
+    if request.method == 'POST':
+        user = current_user
+
+        # get the current password and the new password from the request
+        current_password = request.form['current_password']
+        new_password = request.form['new_password']
+        new_password2 = request.form['new_password2']
+        # verify that the current password is correct
+        if check_password_hash(user.password, current_password):
+            if new_password != new_password2:
+                flash("New passwords do not match")
+
+            else:
+
+                if len(new_password) < 7:
+                    flash('Password must be at least 7 characters.', category='error')
+                else:
+                    # if the current password is correct, hash the new password and update the user's password
+                    user.password = generate_password_hash(new_password)
+                    db.session.commit()
+                    return redirect(url_for('views.scrape'))
+
+        # the current password is incorrect
+        flash("Current password does not match")
+        return redirect(url_for('auth.manageAccount'))
+    else:
+        return render_template("/ManageAccount.html")
+
+
 @auth.route('/logout')
 @login_required
 def logout():
@@ -52,9 +85,7 @@ def sign_up():
 
         elif password1 != password2:
             flash('Passwords don\'t match.', category='error')
-            print("pw dont match")
         elif len(password1) < 7:
-            print("pw not long enough")
             flash('Password must be at least 7 characters.', category='error')
         else:
             new_user = User(email=email, password=generate_password_hash(
