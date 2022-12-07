@@ -7,7 +7,7 @@ Initialize scrape objects
 sold_out = Scrape.Scrape("https://www.socklaender.de/products/funktions-socke-2er-set", "ausverkauft")
 sold_out.get_html()
 
-available = Scrape.Scrape("https://www.socklaender.de/products/funktions-socke", "ausverkauft")
+available = Scrape.Scrape("https://www.schreibathlet.de/collections/alle-hefte/products/schreibschrift-heft", "ausverkauft")
 available.get_html()
 
 incorrect = Scrape.Scrape("https://beemyox.de/products/powerbank-solardeckel", "ausverkauft")

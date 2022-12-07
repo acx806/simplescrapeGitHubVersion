@@ -30,9 +30,9 @@ def forgotPassword():
 
 @views.route("/deleteHistory")
 def delete_history():
-
-    query = website_table.delete().where(website_table.columns.user_id == user_table.columns.user_id)
-
+    Website.query.filter(Website.user_id == current_user.user_id).delete()
+    db.session.commit()
+    return personalData
 
 
 @views.route("/scrape", methods=['GET', 'POST'])
