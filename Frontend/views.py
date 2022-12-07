@@ -4,8 +4,18 @@ from flask_login import login_required, current_user
 from . import db
 from sqlalchemy import or_, and_
 import Frontend.Scrape as Scrape
+import smtplib
 
 views = Blueprint("views", __name__)
+
+# create an SMTP object
+smtp_obj = smtplib.SMTP('smtp-mail.outlook.com', 587)
+
+# start TLS encryption
+smtp_obj.starttls()
+
+# login to the Gmail account
+smtp_obj.login('simplescrape@outlook.com', 'Meisterpacho20')
 
 
 @views.route("/")
@@ -24,8 +34,6 @@ def personalData():
 @views.route("/ForgotPassword")
 def forgotPassword():
     return render_template("/ForgotPassword.html", user=current_user)
-
-
 
 
 @views.route("/deleteHistory")
@@ -96,12 +104,9 @@ def scrape():
             return render_template("Scrape.html", user=current_user, websites=websites)
 
     else:
+
         websites = get_regular_websites()
         return render_template("Scrape.html", user=current_user, websites=websites)
-
-
-
-
 
 
 def get_regular_websites():
@@ -117,6 +122,7 @@ def get_regular_websites():
 
 def scrape_all():
     websites = get_regular_websites()
+
     for website in websites:
         url = website.url
         search_string = website.search_string
@@ -124,13 +130,18 @@ def scrape_all():
         scrape.get_html()
         if scrape.is_available():
             website.available = "Yes"
+
+            # send the email
+            message = '''\
+                    Subject: This is a test email
+    
+                    This is a test email sent using Python and the smtplib module.'''
+
+            smtp_obj.sendmail('simplescrape@outlook.com', current_user.email, message)
+
         else:
             website.available = "No"
         db.session.commit()
-
-
-def test_print():
-    print("SCHEDULER IS DOING SHIT")
 
 
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -155,11 +166,12 @@ def scrape_all_interval():
         scrape_all()
 
     elif select == "10m":
-        scheduler.add_job(func=test_print, trigger="interval", seconds=5, id="regular")
+        scheduler.add_job(func=scrape_all, trigger="interval", seconds=600, id="regular")
 
     elif select == "1h":
-        scheduler.add_job(func=test_print, trigger="interval", seconds=15, id="regular")
+        scheduler.add_job(func=scrape_all, trigger="interval", seconds=3600, id="regular")
 
     elif select == "1d":
-        scheduler.add_job(func=test_print, trigger="interval", seconds=86400, id="regular")
+        scheduler.add_job(func=scrape_all, trigger="interval", seconds=86400, id="regular")
     atexit.register(lambda: scheduler.shutdown())
+
