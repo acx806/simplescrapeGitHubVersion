@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User
+from .models import User, Website
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
+
 from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
@@ -102,5 +103,7 @@ def sign_up():
 
 @auth.route('/delete-account', methods=['GET'])
 def delete_account():
+    Website.query.filter(Website.user_id == current_user.user_id).delete()
     db.session.delete(current_user)
     db.session.commit()
+    return redirect(url_for('views.home'))
