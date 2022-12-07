@@ -31,6 +31,10 @@ pytest:   # This job also runs in the test stage.
   stage: test    # It can run at the same time as unit-test-job (in parallel).
   script:
     - echo "Starting test... This will take about 10 seconds."
+
+    - python -m pip install --upgrade pip
+    - pip install pytest
+
     - pytest -s Target\tests
     - echo "No issues found"
 
