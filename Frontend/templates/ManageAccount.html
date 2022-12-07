@@ -13,7 +13,7 @@
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class=""><svg
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="scrape"><span class=""><svg
             class="bi bi-bezier" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
             viewBox="0 0 16 16">
         <img src="">
@@ -43,7 +43,7 @@
                             src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" width="401" height="382"
                             style="margin-top: -14px;padding-top: 137px;padding-left: auto;margin-right: auto;padding-right: 76px;">
                         <h2 class="text-center mb-4">Change Your Password</h2>
-                        <form method="post">
+                        <form method="POST">
                             <div class="mb-3"><input id="current_password" class="form-control"
                                                      type="Password" name="current_password"
                                                      placeholder="Current Password"/></div>
@@ -57,11 +57,38 @@
                             <div>
                                 <button class="btn btn-primary d-block w-100" type="submit">Confirm</button>
                             </div>
-                        </form>
+                            <p></p>
+                            </table>
+                            <button type="button" class="btn btn-danger d-block w-100" data-bs-toggle="modal"
+                                    data-bs-target="#deletePopup">DELETE ACCOUNT
+                            </button>
+                <div class="modal" tabindex="-1" id="deletePopup">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete your account?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                <a class="btn btn-primary ms-auto" role="button" href="/delete-account"
+                                   style="--bs-primary: #9900ff;--bs-primary-rgb: 153,0,255;background: rgb(255,0,0);font-weight: bold;font-size: 17px;">Yes</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                </form>
+                <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+                <script src="../static/js/bs-init.js"></script>
+
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </section>
 </body>
