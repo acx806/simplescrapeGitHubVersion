@@ -21,26 +21,24 @@ stages:          # List of stages for jobs, and their order of execution
   - test
   - deploy
 
-build-job:       # This job runs in the build stage, which runs first.
-  stage: build
-  steps:
-     - name: Set up Python
-       uses: actions/setup-python@v2
-       with:
-         python-version: 3.9
 
-  script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+    - name: Run tests
+      run: |
+        pytest
 
-pytest:   # This job also runs in the test stage.
-  stage: test    # It can run at the same time as unit-test-job (in parallel).
-  script:
-    - echo "Starting test... This will take about 10 seconds."
 
-    - python -m pip install --upgrade pip
-    - pip install pytest
 
-    - pytest -s Target\tests
-    - echo "No issues found"
 
