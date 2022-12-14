@@ -2,6 +2,41 @@
 <html>
 
 <head>
+    <style>
+    .icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: purple;
+  position: relative;
+  border-radius: 50%;
+}
+.icon::before {
+  content: "?";
+  font-size: 17px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.textbox {
+  display: none;
+  position: center;
+  top: 30px;
+  left: 0px;
+  width: 280px;
+  height: 110px;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid black;
+}
+.icon:hover .textbox {
+  display: block;
+}
+
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>SE2 (1)</title>
@@ -40,17 +75,33 @@
     <div class="container">
         <div class="row-cols-xxl-auto justify-content-start">
             <div class="col-xxl-auto align-self-center">
+                <div class="icon">
+                    <div class="textbox" style="height:80px">
+                        please enter the url for the product you want to scrape
+                    </div>
+                </div>
                 <div class="form-outline mb-4"><input id="form2Example1" class="form-control form-control form-control"
                                                       type="url" name="product_url"/><label
                         class="form-label form-label form-label" for="form2Example1">Web Link</label></div>
+                <div class="icon">
+                    <div class="textbox" style="height: 90px">
+                       Enter how you want this product to be saved into your List
+                    </div>
+                </div>
                 <div class="form-outline mb-4"><input id="form2Example2" class="form-control form-control form-control"
                                                       type="text" name="product_name"/><label
                         class="form-label form-label form-label" for="form2Example2">Product Name</label></div>
+                <div class="icon">
+                    <div class="textbox">
+                        Enter a codeword like :"sold out","ausverkauft","not in stock" etc. which describes the availability of the product
+                    </div>
+                </div>
                 <div class="form-outline mb-4"><input id="form2Example3" class="form-control form-control form-control"
                                                       type="text" name="product_suchstring"/><label
                         class="form-label form-label form-label" for="form2Example3">Search Text</label></div>
                 <div class="center-block">
-                    <div class="form-check"><input id="form2Example31" name="save" class="form-check-input" type="checkbox" value
+                    <div class="form-check"><input id="form2Example31" name="save" class="form-check-input"
+                                                   type="checkbox" value
                                                    checked/><label class="form-label form-label form-check-label"
                                                                    for="form2Example31"> Save to List? </label></div>
                 </div>
@@ -65,53 +116,56 @@
                 <p></p>
 
                 {% with messages = get_flashed_messages(with_categories=true) %} {% if
-              messages %} {% for category, message in messages %} {% if category ==
-    'error' %}
+                messages %} {% for category, message in messages %} {% if category ==
+                'error' %}
 
-                    <div class="alert  alert-danger alter-dismissable fade show" class="close" role="alert">
+                <div class="alert  alert-danger alter-dismissable fade show" class="close" role="alert">
 
-                        <p></p>
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';" aria-hidden="true">&times;</span>
-                        {{ message }}
+                    <p></p>
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';"
+                          aria-hidden="true">&times;</span>
+                    {{ message }}
 
-                    </div>
+                </div>
 
                 {% else %}
 
-                    <div class="alert alert-success alter-dismissable fade show" role="alert">
-                        {{ message }}
+                <div class="alert alert-success alter-dismissable fade show" role="alert">
+                    {{ message }}
 
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';" aria-hidden="true">&times;</span>
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';"
+                          aria-hidden="true">&times;</span>
 
-                    </div>
+                </div>
                 {% endif %} {% endfor %} {% endif %} {% endwith %}
             </div>
             <div class="col align-self-center" style=" width:700px; height:280px; overflow: auto">
                 <div class="col-lg-20 align-self-start">
                     {% block content %}
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col" >Web-Link</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">SearchString</th>
-                                <th scope="col">Available</th>
-                                 <th scope="col">Delete from List</th>
-                            </tr>
-                            </thead>
-                            {% for website in websites %}
-                                <tbody>
-                                <tr>
-                                    <td><a href="{{website.url}}">{{website.url}}</a></td>
-                                    <td>{{ website.productname }}</td>
-                                    <td>{{ website.search_string }}</td>
-                                    <td>{{ website.available }}</td>
-                                    <td><input id="deleteCheckbox" name="save" class="form-check-input" type="checkbox"/><label class="form-label form-label form-check-label"
-                                                                   for="form2Example31"></label></td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Web-Link</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">SearchString</th>
+                            <th scope="col">Available</th>
+                            <th scope="col">Delete from List</th>
+                        </tr>
+                        </thead>
+                        {% for website in websites %}
+                        <tbody>
+                        <tr>
+                            <td><a href="{{website.url}}">{{website.url}}</a></td>
+                            <td>{{ website.productname }}</td>
+                            <td>{{ website.search_string }}</td>
+                            <td>{{ website.available }}</td>
+                            <td><input id="deleteCheckbox" name="save" class="form-check-input" type="checkbox"/><label
+                                    class="form-label form-label form-check-label"
+                                    for="form2Example31"></label></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                     {% endblock %}
                 </div>
             </div>
@@ -124,8 +178,7 @@
     <p></p>
 
 
-
-                </div>
+    </div>
     <form class="form-inline" method="POST" action="{{ url_for('views.scrape') }}">
         <div class="form-group">
             <div class="input-group">
