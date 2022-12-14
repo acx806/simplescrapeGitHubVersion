@@ -102,7 +102,7 @@
                             {% for website in websites %}
                                 <tbody>
                                 <tr>
-                                    <td>{{ website.url }}</td>
+                                    <td><a href="{{website.url}}">{{website.url}}</a></td>
                                     <td>{{ website.productname }}</td>
                                     <td>{{ website.search_string }}</td>
                                     <td>{{ website.available }}</td>
