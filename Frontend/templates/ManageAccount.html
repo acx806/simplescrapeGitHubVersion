@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../static/css/untitled.css">
 </head>
 
-<body>
+<body style="background-color:#343036; color:white">
 <nav class="navbar navbar-light navbar-expand-md py-3">
     <div class="container"><a class="navbar-brand d-flex align-items-center" href="scrape"><span class=""><svg
             class="bi bi-bezier" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
@@ -19,7 +19,7 @@
         <img src="">
 
 
-                </svg></span><span>Simple Scrape</span></a>
+                </svg></span><span style="color: white">Simple Scrape</span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div id="navcol-2" class="collapse navbar-collapse">
@@ -33,89 +33,78 @@
     </div>
 </nav>
 
-<section class="position-relative py-4 py-xl-5">
-    <div class="container position-relative">
-        <div class="row d-flex justify-content-center" style="padding-top: 141px;margin-top: -8px;">
-            <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                <div class="card mb-5"
-                     style="padding-bottom: 0px;margin-bottom: 2px;padding-left: 0px;padding-top: 0px;margin-top: -518px;">
-                    <div class="card-body p-sm-5" style="margin-top: 181px;padding-top: 46px;padding-right: 1px;"><img
-                            src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" width="401" height="382"
-                            style="margin-top: -14px;padding-top: 137px;padding-left: auto;margin-right: auto;padding-right: 76px;">
-                        <h2 class="text-center mb-4">Change Your Password</h2>
-                        <form method="POST">
-                            <div class="mb-3"><input id="current_password" class="form-control"
-                                                     type="Password" name="current_password"
-                                                     placeholder="Current Password"/></div>
-                            <div class="mb-3"><input class="form-control form-control"
-                                                     type="password" id="new_password"
-                                                     name="new_password" placeholder="New Password">
-                                <input id="new_password2" class="form-control" type="Password"
-                                       name="new_password2" placeholder="New Password"
-                                       style="margin-top: 12px;"/></div>
-                            <div class="mb-3"></div>
-                            {% with messages = get_flashed_messages(with_categories=true) %} {% if
+<div class="container"
+     style="width: 612.4px;height: 392px;margin: 128px;margin-top: auto; margin-left: auto; margin-right: auto"><img
+        src="../static/img/SIMPLE_SCRAPE__1_-removebg-preview.png" width="401" height="382"
+        style="margin-top: -14px;padding-top: 137px;padding-left: auto;margin-right: auto;padding-right: 76px;">
+    <h2 class="text-center mb-4">Change Your Password</h2>
+    <form method="POST">
+        <div class="mb-3"><input id="current_password" class="form-control"
+                                 type="Password" name="current_password"
+                                 placeholder="Current Password"/></div>
+        <div class="mb-3"><input class="form-control form-control"
+                                 type="password" id="new_password"
+                                 name="new_password" placeholder="New Password">
+            <input id="new_password2" class="form-control" type="Password"
+                   name="new_password2" placeholder="New Password"
+                   style="margin-top: 12px;"/></div>
+        <div class="mb-3"></div>
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
                             messages %} {% for category, message in messages %} {% if category ==
                             'error' %}
 
-                            <div class="alert  alert-danger alter-dismissable fade show" class="close" role="alert">
+            <div class="alert  alert-danger alter-dismissable fade show" class="close" role="alert">
 
-                                <p></p>
-                                <span class="closebtn" onclick="this.parentElement.style.display='none';"
-                                      aria-hidden="true">&times;</span>
-                                {{ message }}
+                <p></p>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';"
+                      aria-hidden="true">&times;</span>
+                {{ message }}
 
-                            </div>
+            </div>
 
-                            {% else %}
+        {% else %}
 
-                            <div class="alert alert-success alter-dismissable fade show" role="alert">
-                                {{ message }}
+            <div class="alert alert-success alter-dismissable fade show" role="alert">
+                {{ message }}
 
-                                <span class="closebtn" onclick="this.parentElement.style.display='none';"
-                                      aria-hidden="true">&times;</span>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';"
+                      aria-hidden="true">&times;</span>
 
-                            </div>
-                            {% endif %} {% endfor %} {% endif %} {% endwith %}
-                            <div>
-                                <button class="btn btn-primary d-block w-100" type="submit">Confirm</button>
-                            </div>
-                            <p></p>
-                            </table>
+            </div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %}
+        <div>
+            <button class="btn btn-primary d-block w-100" type="submit">Confirm</button>
+        </div>
+        <p></p>
+        </table>
 
-                            <button type="button" class="btn btn-danger d-block w-100" data-bs-toggle="modal"
-                                    data-bs-target="#deletePopup">DELETE ACCOUNT
-                            </button>
-                            <div class="modal" tabindex="-1" id="deletePopup">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Modal title</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Are you sure you want to delete your account?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No
-                                            </button>
-                                            <a class="btn btn-primary ms-auto" role="button" href="/delete-account"
-                                               style="--bs-primary: #9900ff;--bs-primary-rgb: 153,0,255;background: rgb(255,0,0);font-weight: bold;font-size: 17px;">Yes</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <script src="../static/bootstrap/js/bootstrap.min.js"></script>
-                        <script src="../static/js/bs-init.js"></script>
-
+        <button type="button" class="btn btn-danger d-block w-100" data-bs-toggle="modal"
+                data-bs-target="#deletePopup">DELETE ACCOUNT
+        </button>
+        <div class="modal" tabindex="-1" id="deletePopup">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete your account?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No
+                        </button>
+                        <a class="btn btn-primary ms-auto" role="button" href="/delete-account"
+                           style="--bs-primary: #9900ff;--bs-primary-rgb: 153,0,255;background: rgb(255,0,0);font-weight: bold;font-size: 17px;">Yes</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </form>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/js/bs-init.js"></script>
+
 </body>
 
 </html>
