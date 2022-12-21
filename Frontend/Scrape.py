@@ -19,6 +19,7 @@ class Scrape:
         self.product_url = product_url
         self.search_string = search_string.lower()
         self.html = None
+
     def get_html(self):
 
         try:

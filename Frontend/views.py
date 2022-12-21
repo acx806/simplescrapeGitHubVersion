@@ -129,16 +129,16 @@ def scrape_all():
         scrape = Scrape.Scrape(url, search_string)
         scrape.get_html()
         if scrape.is_available():
+            if website.available == "No":
+                # send the email
+                message = '''\
+                                   Subject: This is a test email
+
+                                   This is a test email sent using Python and the smtplib module.'''
+
+                smtp_obj.sendmail('simplescrape@outlook.com', current_user.email, message)
+
             website.available = "Yes"
-
-            # send the email
-            message = '''\
-                    Subject: This is a test email
-    
-                    This is a test email sent using Python and the smtplib module.'''
-
-            smtp_obj.sendmail('simplescrape@outlook.com', current_user.email, message)
-
         else:
             website.available = "No"
         db.session.commit()
