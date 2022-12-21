@@ -42,7 +42,7 @@ def manageAccount():
         # verify that the current password is correct
         if check_password_hash(user.password, current_password):
             if new_password != new_password2:
-                flash("New passwords do not match")
+                flash("New passwords do not match", category='error')
 
             else:
 
@@ -55,7 +55,7 @@ def manageAccount():
                     return redirect(url_for('views.scrape'))
 
         # the current password is incorrect
-        flash("Current password does not match")
+        flash("Current password does not match", category='error')
         return redirect(url_for('auth.manageAccount'))
     else:
         return render_template("/ManageAccount.html")

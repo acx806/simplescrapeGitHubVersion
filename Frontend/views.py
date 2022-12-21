@@ -95,7 +95,7 @@ def scrape():
 
             except ValueError as e:
                 print("Website: " + scraping_url + " ist incorrect")
-                flash('Incorrect URL')
+                flash('Incorrect URL', category='error')
                 print("Averted value error for url")
 
             websites = get_regular_websites()
