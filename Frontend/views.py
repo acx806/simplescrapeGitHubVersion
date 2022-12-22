@@ -154,7 +154,9 @@ def scrape_all(user_id, scrape_now):
 
                     if not scrape_now:
                         msg = MIMEText(
-                            'Hey!\nThe product:  ' + website.productname + '   is available again!\n\nThank you for using SimpleScrape!')
+                            'Hey!\nThe product:  ' + website.productname + '   is available again!' +
+                                                                           '\n\nYou can find it here:  ' + website.url +
+                                                                           '\n\nThank you for using SimpleScrape!')
 
                         msg['Subject'] = 'Example Subject'
                         msg['From'] = 'simplescrape@outlook.com'
