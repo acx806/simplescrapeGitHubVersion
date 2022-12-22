@@ -146,28 +146,27 @@
                         <thead>
                         <tr>
                             <th scope="col">Web-Link</th>
-                            <th scope="col">Product Name</th>
+                            <th scope="col">Product</th>
                             <th scope="col">SearchString</th>
                             <th scope="col">Available</th>
-                            <th scope="col">Delete from List</th>
+                            <th scope="col">Delete</th>
                         </tr>
                         </thead>
-                        {% for website in websites %}
+
                         <tbody>
+                        {% for website in websites %}
                         <tr>
                             <td><a href="{{website.url}}">{{website.url}}</a></td>
                             <td>{{ website.productname }}</td>
                             <td>{{ website.search_string }}</td>
                             <td>{{ website.available }}</td>
-                            <td><button class="btn-close btn-close-white" aria-label="Close"></button></td>
-                        </tr>
+                            <td><a class="btn-close btn-close-white" href="/delete_record/{{ website.website_id }}" aria-label="Close"></a></td>
                         {% endfor %}
                         </tbody>
                     </table>
                     {% endblock %}
                 </div>
             </div>
-
         </div>
     </div>
 

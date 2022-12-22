@@ -5,17 +5,27 @@ from . import db
 from sqlalchemy import or_, and_
 import Frontend.Scrape as Scrape
 import smtplib
+import time
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.jobstores.base import JobLookupError
+from email.mime.text import MIMEText
 
 views = Blueprint("views", __name__)
 
 # create an SMTP object
 smtp_obj = smtplib.SMTP('smtp-mail.outlook.com', 587)
+# smtp_obj = smtplib.SMTP('smtp.office365.com', 587)
+# smtp_obj = smtplib.SMTP('mail.gmx.net', 465)
 
 # start TLS encryption
 smtp_obj.starttls()
 
 # login to the Gmail account
+# smtp_obj.login('yasemin.akaydin@haw-hamburg.de', 'Pacho2020!')
 smtp_obj.login('simplescrape@outlook.com', 'Meisterpacho20')
+
+
+# smtp_obj.login('shakes.95@gmx.net', 'Meisterpacho20')
 
 
 @views.route("/")
@@ -43,6 +53,13 @@ def delete_history():
     return personalData()
 
 
+@views.route('/delete_record/<int:id>', methods=['GET'])
+def delete_record(id):
+    Website.query.filter(Website.website_id == id).delete()
+    db.session.commit()
+    return redirect("/scrape")
+
+
 @views.route("/scrape", methods=['GET', 'POST'])
 @login_required
 def scrape():
@@ -50,7 +67,7 @@ def scrape():
         if request.form['btn'] == 'scrapeAll':
             scrape_all_interval()
 
-            websites = get_regular_websites()
+            websites = get_regular_websites(current_user.user_id)
             return render_template("Scrape.html", user=current_user, websites=websites)
 
         else:
@@ -89,7 +106,7 @@ def scrape():
                 db.session.add(data)
                 db.session.commit()
 
-                websites = get_regular_websites()
+                websites = get_regular_websites(current_user.user_id)
 
                 return render_template("Scrape.html", user=current_user, availability=availability, websites=websites)
 
@@ -98,60 +115,74 @@ def scrape():
                 flash('Incorrect URL', category='error')
                 print("Averted value error for url")
 
-            websites = get_regular_websites()
+            websites = get_regular_websites(current_user.user_id)
 
             # websites = Website.query.filter_by(user_id=current_user.user_id and .regularly is not None)
             return render_template("Scrape.html", user=current_user, websites=websites)
 
     else:
+        websites = get_regular_websites(current_user.user_id)
 
-        websites = get_regular_websites()
         return render_template("Scrape.html", user=current_user, websites=websites)
 
 
-def get_regular_websites():
-    return db.session.query(
-        Website
-    ).filter(
-        and_(
-            Website.user_id == current_user.user_id,
-            Website.regularly != None
-        )
-    ).all()
+def get_regular_websites(user_id):
+    with db.app.app_context():
+        return db.session.query(
+            Website
+        ).filter(
+            and_(
+                Website.user_id == user_id,
+                Website.regularly is not None
+            )
+        ).all()
 
 
-def scrape_all():
-    websites = get_regular_websites()
+def scrape_all(user_id, scrape_now):
+    print("USER: " + str(current_user) + "   of type: " + str(type(current_user)))
+    print("übergebener user: " + str(user_id))
+    websites = get_regular_websites(user_id=user_id)
+    with db.app.app_context():
+        for website in websites:
+            url = website.url
+            search_string = website.search_string
+            scrape = Scrape.Scrape(url, search_string)
+            scrape.get_html()
+            if scrape.is_available():
+                if website.available == "No":
+                    # send the email
 
-    for website in websites:
-        url = website.url
-        search_string = website.search_string
-        scrape = Scrape.Scrape(url, search_string)
-        scrape.get_html()
-        if scrape.is_available():
-            if website.available == "No":
-                # send the email
-                message = '''\
-                                   Subject: This is a test email
+                    if not scrape_now:
+                        msg = MIMEText(
+                            'Hey!\nThe product:  ' + website.productname + '   is available again!\n\nThank you for using SimpleScrape!')
 
-                                   This is a test email sent using Python and the smtplib module.'''
+                        msg['Subject'] = 'Example Subject'
+                        msg['From'] = 'simplescrape@outlook.com'
+                        msg['To'] = User.query.get(user_id).email
+                        smtp_obj.sendmail(msg['From'], msg['To'], msg.as_string())
+                        time.sleep(3)
 
-                smtp_obj.sendmail('simplescrape@outlook.com', current_user.email, message)
+                current_website = website
+                db.session.delete(website)
+                current_website.available = "Yes"
+                db.session.add(current_website)
 
-            website.available = "Yes"
-        else:
-            website.available = "No"
-        db.session.commit()
+            else:
+                current_website = website
+                db.session.delete(website)
+                current_website.available = "No"
+                db.session.add(current_website)
 
+            db.session.commit()
 
-from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.jobstores.base import JobLookupError
 
 scheduler = BackgroundScheduler()
-scheduler.start()
 
 
 def scrape_all_interval():
+    if not scheduler.running:
+        scheduler.start()
+
     select = request.form.get('time_interval')
     import atexit
 
@@ -163,15 +194,15 @@ def scrape_all_interval():
         pass
 
     if select == "once":
-        scrape_all()
+        scrape_all(current_user.user_id, True)
 
     elif select == "10m":
-        scheduler.add_job(func=scrape_all, trigger="interval", seconds=600, id="regular")
+        user_id = current_user.user_id
+        scheduler.add_job(func=scrape_all, args=[user_id, False], trigger="interval", seconds=20, id="regular")
 
     elif select == "1h":
-        scheduler.add_job(func=scrape_all, trigger="interval", seconds=3600, id="regular")
+        scheduler.add_job(func=scrape_all, args=[current_user, False], trigger="interval", seconds=3600, id="regular")
 
     elif select == "1d":
-        scheduler.add_job(func=scrape_all, trigger="interval", seconds=86400, id="regular")
+        scheduler.add_job(func=scrape_all, args=[current_user, False], trigger="interval", seconds=86400, id="regular")
     atexit.register(lambda: scheduler.shutdown())
-
