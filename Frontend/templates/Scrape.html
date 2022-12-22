@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="../static/css/untitled.css">
 </head>
 
-<body>
+<body style="background-color:#343036; color:white">
 <nav class="navbar navbar-light navbar-expand-md py-3">
     <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class=""><svg
             class="bi bi-bezier" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
@@ -55,15 +55,15 @@
         <img src="">
 
 
-                </svg></span><span>Simple Scrape</span></a>
+                </svg></span><span style="color: white">Simple Scrape</span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div id="navcol-2" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/personalData">Personal Data</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#">Scrape</a></li>
-                <li class="nav-item"><a class="nav-link" href="/ManageAccount">Manage Account</a></li>
-                <li class="nav-item"><a class="nav-link" href="/">Log-out</a></li>
+                <li class="nav-item"><a class="nav-link" href="/personalData" style="color: white">Personal Data</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#" style="color: white">Scrape</a></li>
+                <li class="nav-item"><a class="nav-link" href="/ManageAccount"style="color: white">Manage Account</a></li>
+                <li class="nav-item"><a class="nav-link" href="/"style="color: white">Log-out</a></li>
             </ul>
         </div>
     </div>
@@ -76,15 +76,15 @@
         <div class="row-cols-xxl-auto justify-content-start">
             <div class="col-xxl-auto align-self-center">
                 <div class="icon">
-                    <div class="textbox" style="height:80px">
-                        please enter the url for the product you want to scrape
+                    <div class="textbox" style="height:80px; color: black">
+                        Please enter the url for the product you want to scrape
                     </div>
                 </div>
                 <div class="form-outline mb-4"><input id="form2Example1" class="form-control form-control form-control"
                                                       type="url" name="product_url"/><label
                         class="form-label form-label form-label" for="form2Example1">Web Link</label></div>
                 <div class="icon">
-                    <div class="textbox" style="height: 90px">
+                    <div class="textbox" style="height: 90px;color: BLACK">
                        Enter how you want this product to be saved into your List
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                                                       type="text" name="product_name"/><label
                         class="form-label form-label form-label" for="form2Example2">Product Name</label></div>
                 <div class="icon">
-                    <div class="textbox">
+                    <div class="textbox" STYLE="color: BLACK">
                         Enter a codeword like :"sold out","ausverkauft","not in stock" etc. which describes the availability of the product
                     </div>
                 </div>
@@ -139,10 +139,10 @@
                 </div>
                 {% endif %} {% endfor %} {% endif %} {% endwith %}
             </div>
-            <div class="col align-self-center" style=" width:700px; height:280px; overflow: auto">
+            <div class="col align-self-center" style=" width:700px; height:280px; overflow: auto; color: white">
                 <div class="col-lg-20 align-self-start">
                     {% block content %}
-                    <table class="table">
+                    <table class="table" style="color: white">
                         <thead>
                         <tr>
                             <th scope="col">Web-Link</th>
@@ -159,9 +159,7 @@
                             <td>{{ website.productname }}</td>
                             <td>{{ website.search_string }}</td>
                             <td>{{ website.available }}</td>
-                            <td><input id="deleteCheckbox" name="save" class="form-check-input" type="checkbox"/><label
-                                    class="form-label form-label form-check-label"
-                                    for="form2Example31"></label></td>
+                            <td><button class="btn-close btn-close-white" aria-label="Close"></button></td>
                         </tr>
                         {% endfor %}
                         </tbody>
