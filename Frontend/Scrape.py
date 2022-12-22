@@ -23,7 +23,7 @@ class Scrape:
     def get_html(self):
 
         try:
-            self.html = requests.get(self.product_url).text
+            self.html = requests.get(self.product_url, verify=False, timeout=5).text
             self.soup = BeautifulSoup(self.html, 'html.parser')
         except requests.exceptions.RequestException as e:  # This is the correct syntax
             '''TODO: Flash incorrect URL'''
