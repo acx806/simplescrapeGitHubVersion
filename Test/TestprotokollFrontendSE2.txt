@@ -1,0 +1,89 @@
+test01NewAcc:
+Ziel: Erstellen eines Neuen Accounts
+Was muss getan werden:
+1. Von der Startseite mit dem "Try it for free" Button auf die Sign Up seite Umgeleitet werden.
+2. Email und Passwort eingeben
+3. Passwort wiederholen+
+4. "Create Account" Button drücken
+
+Was kann schief laufen:
+Buttons reagieren nicht
+Passwort wurde nicht wiederholt oder falsch wiederholt -> Error wird erwartet
+Keine email eingegenen/ Account bereits vorhanden -> Error mit fehlermeldung
+
+
+test02Login
+Ziel: Mit Existierendem Account einloggen
+1. Vom Home Screen mit dem "Login/" Button auf die Loggin seite kommen 
+2. Email und Passwort eingeben
+3. Auf Scrapingseite weitergeleitet werden
+
+Was kann schief laufen:
+Buttons reagieren nicht
+Email/Passwort falsch -> Error mit Nachricht
+Email existiert nicht -> Error
+Keine daten Angegeben -> Error
+Links welche einen auf andere Seite bringen sollen gehen nicht
+
+test03Scrape
+Ziel: Mit Prüfen mit einem Produktlink, ob ein Artikel verfügbar ist
+Was muss getan werden:
+1.Login, um auf die Scrape seite zu gelangen (siehe test02)
+2.Eingeben einer Produkturl, Produktnamen und eines Suchstrings in die einezelen Textfelder
+3.Drücken des Scrape Buttons
+4.Erscheinen des Produktes mit entsprechenden Informationen in einer Tabelle
+
+Was kann schief laufen:
+Buttons reagieren nicht
+Navbar regiert nicht 
+Falsche informationen in den Textfeldern wurden eingegeben (bsp: ein Suchstring als URL) -> Error
+Produkt wird nicht in der Unteren Tabelle angezeigt
+Produkt wird mit falschen informationen in der Tabelle angezeigt
+Produktlinks sind nicht anklickbar
+
+test04DelHistory
+Ziel: Löschen des Scrapeverlaufs
+1.Login
+2.Von Scrapeseite aus über die Navbar auf Personal Data navigiern (anklicken des Punkes "Personal Data" in der Navbar)
+3.Drücken des Clear History buttons
+4.Url werden gelöscht und werden nicht mehr angezeigt
+
+Was kann schief laufen:
+Buttons reagieren nicht
+Navbar regiert nicht 
+Urls werden nicht gelöscht
+
+
+test05ChangePassword:
+Ziel: Ändern des Passwortes
+1.Login
+2.Von Scrapeseite aus über die Navbar auf Manage Account navigiern (anklicken des Punkes "Manage account" in der Navbar)
+3.Eingeben des Alten Passwortes
+4.Neues Passwort eingeben und wiederholen
+5.Confirm button drücken
+6.Mit neues Passwort einloggen
+
+Was kann schief laufen:
+Buttons reagieren nicht
+Navbar regiert nicht 
+Passwort wurde nicht geändert
+Altes Passwort wurde falsch eingetragen -> Error
+Passwort wurde nicht wiederholt oder falsch wiederholt -> Error wird erwartet
+
+
+test06DelAcc
+Ziel: Account Löschen:
+1.Login
+2.Von Scrapeseite aus über die Navbar auf Manage Account navigiern (anklicken des Punkes "Manage account" in der Navbar)
+3.Drücken des Delete Account Buttons
+4.Löschung bestätigen durch drücken des Yes Buttons im Popup
+5.Versuchen sich mit dem Account einzuloggen
+
+Was kann schief laufen:
+Buttons reagieren nicht
+Navbar regiert nicht 
+Popup Erscheint nicht
+Account wird nicht gelöscht
+
+
+
