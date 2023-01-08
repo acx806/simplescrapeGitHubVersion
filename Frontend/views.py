@@ -84,20 +84,23 @@ def scrape():
                 print("SAVE TO LIST?" + str(type(save_to_list)))
 
                 if save_to_list is not None:
+                    print("WILL  BE ADDED")
                     website = Website(productname=scraping_productname,
                                       url=scraping_url, search_string=scraping_suchstring,
                                       user_id=current_user.user_id, available=availability, regularly="ADD")
                 else:
+                    print("WILL NOT BE ADDED")
                     website = Website(productname=scraping_productname,
                                       url=scraping_url, search_string=scraping_suchstring,
                                       user_id=current_user.user_id, available=availability)
 
-                if scrape.is_available():
-                    website.available = "Yes"
-                    flash("In Stock", category="success")
-                else:
-                    website.available = "No"
-                    flash("Sold Out", category="error")
+                if scrape.response == 200:
+                    if scrape.is_available():
+                        website.available = "Yes"
+                        flash("In Stock", category="success")
+                    else:
+                        website.available = "No"
+                        flash("Sold Out", category="error")
 
                 db.session.add(website)
                 db.session.commit()
@@ -117,7 +120,7 @@ def scrape():
 
             websites = get_regular_websites(current_user.user_id)
 
-            # websites = Website.query.filter_by(user_id=current_user.user_id and .regularly is not None)
+
             return render_template("Scrape.html", user=current_user, websites=websites)
 
     else:
@@ -133,7 +136,7 @@ def get_regular_websites(user_id):
         ).filter(
             and_(
                 Website.user_id == user_id,
-                Website.regularly is not None
+                Website.regularly == "ADD"
             )
         ).all()
 
