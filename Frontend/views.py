@@ -120,7 +120,6 @@ def scrape():
 
             websites = get_regular_websites(current_user.user_id)
 
-
             return render_template("Scrape.html", user=current_user, websites=websites)
 
     else:
@@ -158,8 +157,8 @@ def scrape_all(user_id, scrape_now):
                     if not scrape_now:
                         msg = MIMEText(
                             'Hey!\nThe product:  ' + website.productname + '   is available again!' +
-                                                                           '\n\nYou can find it here:  ' + website.url +
-                                                                           '\n\nThank you for using SimpleScrape!')
+                            '\n\nYou can find it here:  ' + website.url +
+                            '\n\nThank you for using SimpleScrape!')
 
                         msg['Subject'] = 'Example Subject'
                         msg['From'] = 'simplescrape@outlook.com'
