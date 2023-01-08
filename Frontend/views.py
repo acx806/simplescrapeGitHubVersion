@@ -163,7 +163,7 @@ def scrape_all(user_id, scrape_now):
                         msg['Subject'] = 'Example Subject'
                         msg['From'] = 'simplescrape@outlook.com'
                         msg['To'] = User.query.get(user_id).email
-                        smtp_obj.sendmail(msg['From'], msg['To'], msg.as_string())
+                        #smtp_obj.sendmail(msg['From'], msg['To'], msg.as_string())
                         time.sleep(3)
 
                 current_website = website
