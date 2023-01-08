@@ -1,0 +1,32 @@
+Testprotokoll zur Funktion "Benutzerkonto löschen"
+
+Version 1.0
+--------------------------------------------------------------
+Hinweis:
+    Die Tests erfolgen mithilfe unserer Benutzeroberfläche und der Datenbank.
+    Die Tests decken ausschließlich die Kernfunktionalität ab.
+--------------------------------------------------------------
+1. Testbeschreibung
+In diesem Testprotokoll testen wir die Funktion "Benutzerkonto löschen", welche das Benutzerkonto des Users zuverlässig und mitsamt aller Informationen löscht.
+
+2. Annahmen und Voraussetzungen
+Vor der Ausführung des Tests registrieren wir eine persönliche E-Mail-Adresse und loggen und schließlich ein auf der Webseite.
+
+3. Testdaten
+Email-Adresse:
+Passwort:
+User-Id:
+
+
+4. Auszuführende Schritte
+- wir registrieren uns mit der vorgegeben Email-Adresse auf der Webseite
+- nach erfolgreicher Registrierung loggen wir uns ein
+- wir gehen auf "Manage Account" und wählen die Option "Benutzerkonto löschen" aus
+
+5. Erwartetes Ergebnis
+Das zu erwartende Ergebnis wäre, dass der User, welcher sein Benutzerkonto gelöscht hat, nicht mehr in unserer Datenbank zu finden ist.
+
+6. Tatsächliches Ergebnis und Nachbedingungen
+Nach Ausführung der Schritte ist zu sehen, dass sich der User mit der entsprechenden User ID nicht mehr in der Datenbank befindet und somit auch 
+keine einzige Information mehr über ihn.
+-	Korrekte URLs prüfen
