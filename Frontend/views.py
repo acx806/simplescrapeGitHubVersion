@@ -12,20 +12,20 @@ from email.mime.text import MIMEText
 
 views = Blueprint("views", __name__)
 
-# create an SMTP object
-smtp_obj = smtplib.SMTP('smtp-mail.outlook.com', 587)
-# smtp_obj = smtplib.SMTP('smtp.office365.com', 587)
-# smtp_obj = smtplib.SMTP('mail.gmx.net', 465)
-
-# start TLS encryption
-smtp_obj.starttls()
-
-# login to the Gmail account
-# smtp_obj.login('yasemin.akaydin@haw-hamburg.de', 'Pacho2020!')
-smtp_obj.login('simplescrape@outlook.com', 'Meisterpacho20')
-
-
-# smtp_obj.login('shakes.95@gmx.net', 'Meisterpacho20')
+# # create an SMTP object
+# smtp_obj = smtplib.SMTP('smtp-mail.outlook.com', 587)
+# # smtp_obj = smtplib.SMTP('smtp.office365.com', 587)
+# # smtp_obj = smtplib.SMTP('mail.gmx.net', 465)
+#
+# # start TLS encryption
+# smtp_obj.starttls()
+#
+# # login to the Gmail account
+# # smtp_obj.login('yasemin.akaydin@haw-hamburg.de', 'Pacho2020!')
+# smtp_obj.login('simplescrape@outlook.com', 'Meisterpacho20')
+#
+#
+# # smtp_obj.login('shakes.95@gmx.net', 'Meisterpacho20')
 
 
 @views.route("/")
