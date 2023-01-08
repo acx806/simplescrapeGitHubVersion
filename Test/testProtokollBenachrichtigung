@@ -1,0 +1,40 @@
+Testprotokoll zur Funktion "Benachrichtigung bei erneuter Verfügbarkeit eines Produkts"
+
+Version 1.0
+--------------------------------------------------------------
+Hinweis:
+    Die Tests erfolgen mithilfe der Domain „simplescrape.net“.
+    Die Tests decken ausschließlich die Kernfunktionalität ab.
+--------------------------------------------------------------
+1. Testbeschreibung
+In diesem Testprotokoll testen wir die Funktionalität, die Liste mit den gespeicherten Produkten in Intervallen zu scrapen und bei erneuter Verfügbarkeit 
+eines Produkts als User eine Email zu empfangen.
+
+2. Annahmen und Voraussetzungen
+Vor Ausführung des Tests wird eine Produkt ausgewählt, welches derzeit ausverkauft ist auf der entsprechenden Webseite sowie ein Produkt, welches 
+definitiv verfügbar ist (hierbei handelt es sich um zwei verschiedene Produkte, da es 
+egal ist, um welches spezifische Produkt es sich handelt). Vor Ausfürhung des Tests melden wir uns auf unserer Webseite mit einer beliebigen
+Email Adresse an. Zusätzlich melden wir uns bei "Outlook" mit unserer persönlichen Email-ADresse: simplescrape@outlook.com an.
+Damit wir nicht all zu lange auf ein mögliches Ergebnis warten müssen, wird die Zeitspanne von 10 Minuten intern auf 20 Sekunden eingestellt.
+
+3. Testdaten
+Domain: simplescrape.net
+Produkt (ausverkauft):
+Produkt (verfügbar):
+Mailserver: Outlook.com
+Email-Adresse: simplescrape@outlook.com
+Passwort: MeisterPacho20!
+
+4. Auszuführende Schritte
+- wir leiten die Domain simplescrape.net auf eine URL um, welche ein ausverkauftes Produkt aufzeigt
+- wir loggen uns mit unserer Email-Adresse auf der Webseite an und speichern simplescrape.net in unserer Liste
+- wir wählen die Option „Alle 10m scrapen“ aus und warten auf eine Email von simplescrape.net nach 20 s
+- in diesen 20s leiten wir die Domain simplescrape.net auf ein Produkt um, welches verfügbar ist
+
+5. Erwartetes Ergebnis
+Das zu erwartende Ergebnis wäre, dass der User eine Email bekommt, in der steht, dass sein gespeichertes Produkt erneut verfügbar ist. Außerdem 
+soll der User diese Mail nur einmal bekommen, um so einen Spam zu verhindern.
+
+6. Tatsächliches Ergebnis und Nachbedingungen
+Nach Ausführung der Schritte ist zu sehen, dass der User eine Email Adresse bekommt von simplescrape@outlook.com.
+
