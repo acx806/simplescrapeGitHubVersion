@@ -31,4 +31,4 @@ def test_scrape_available():
 #         incorrect = Scrape.Scrape("https://beemyox.de/products/powerbank-solardeckel", "ausverkauft")
 #         incorrect.get_html()
 #         incorrect.is_available()
-#
+
